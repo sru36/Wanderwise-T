@@ -372,15 +372,17 @@ button:hover {
 }
 
 .serviceshero h1 {
+    position: relative;
     font-size: 4rem;
     margin-bottom: 20px;
+    color: #EFC958;
 }
 
 .serviceshero h3 {
-    padding-top: 3vh;
+
     font-family: Satoshi-Regular, sans-serif;
-    font-size: 3rem;
-    margin-bottom: 20px;
+    margin-bottom: 2px;
+    font-size: 2rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     letter-spacing: 2px;
     text-align: center;
