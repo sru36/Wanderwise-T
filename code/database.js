@@ -14,12 +14,12 @@ const db = new sqlite3.Database(dbPath, (err) => {
 
 // Initialize database tables if they don't exist
 function initializeDatabase() {
-  // Users table
+  // Users table with validation
   db.run(`CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username TEXT UNIQUE NOT NULL,
-    email TEXT UNIQUE NOT NULL,
-    password TEXT NOT NULL,
+    username TEXT UNIQUE NOT NULL CHECK(length(username) > 0),
+    email TEXT UNIQUE NOT NULL CHECK(length(email) > 0),
+    password TEXT NOT NULL CHECK(length(password) > 0),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
   )`);
 
@@ -75,13 +75,13 @@ function initializeDatabase() {
     }
   ];
 
-  // Check if destinations table is empty before inserting samples
+  // Check if destinations table is empty before inserting samples with error handling
   db.get('SELECT COUNT(*) as count FROM destinations', (err, row) => {
     if (err) {
-      console.error(err.message);
+      console.error('Error checking destinations count:', err.message);
       return;
     }
-    
+
     if (row.count === 0) {
       // Insert sample destinations
       const stmt = db.prepare('INSERT INTO destinations (name, location, description, image_url, category, popular) VALUES (?, ?, ?, ?, ?, ?)');

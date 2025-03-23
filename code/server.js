@@ -43,6 +43,19 @@ app.get('/explore', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'explore.html'));
 });
 
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
+// Update session management for production
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'wanderwise-secret-key',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: process.env.NODE_ENV === 'production', maxAge: 24 * 60 * 60 * 1000 } // 24 hours
+}));
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
