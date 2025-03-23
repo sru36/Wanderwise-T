@@ -1,0 +1,43 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const path = require('path');
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Database connection
+const db = require('./database');
+
+// Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: 'wanderwise-secret-key',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false, maxAge: 24 * 60 * 60 * 1000 } // 24 hours
+}));
+
+// Routes
+const authRoutes = require('./routes/auth');
+const destinationRoutes = require('./routes/destinations');
+const reviewRoutes = require('./routes/reviews');
+
+app.use('/auth', authRoutes);
+app.use('/destinations', destinationRoutes);
+app.use('/reviews', reviewRoutes);
+
+// Serve the main HTML files
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/explore', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'explore.html'));
+});
+
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
