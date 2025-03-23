@@ -1,15 +1,19 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const path = require('path');
+const mongoose = require('mongoose');
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Database connection
-const db = require('./database');
+require('./config/database'); // Using the first code's database configuration
 
 // Middleware
-app.use(bodyParser.json());
+app.use(cors());
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
@@ -20,10 +24,12 @@ app.use(session({
 }));
 
 // Routes
+const apiRoutes = require('./routes/api');
 const authRoutes = require('./routes/auth');
 const destinationRoutes = require('./routes/destinations');
 const reviewRoutes = require('./routes/reviews');
 
+app.use('/api', apiRoutes);
 app.use('/auth', authRoutes);
 app.use('/destinations', destinationRoutes);
 app.use('/reviews', reviewRoutes);
