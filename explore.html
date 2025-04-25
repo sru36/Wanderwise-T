@@ -1,37 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explore - Wanderwise</title>
-    <link rel="stylesheet" href="explore.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">
-                <a href="index.html">
-                    <img src="images/logo.png" alt="Wanderwise Logo">
-                </a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="explore.html" class="active">Explore</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-            <div class="auth-links">
-                <a href="#" id="loginBtn">Login</a>
-                <a href="#" id="signupBtn" class="signup-btn">Sign Up</a>
-                <a href="#" id="logoutBtn" style="display: none;">Logout</a>
-                <span id="welcomeUser" style="display: none;"></span>
-            </div>
-        </nav>
-    </header>
+    <title>Wanderwise | Explore</title>
+    <meta name="description" content="Explore amazing destinations with Wanderwise.">
+    <meta name="keywords" content="travel, explore, destinations, reviews">
 
-    <main>
-        <div class="container">
+    <link rel="stylesheet" href="explore.css">
+</head>
+
+<body>
+    <nav class="nav">
+        <ul class="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="explore.html" class="active">Explore</a></li>
+            <li><a href="#about">About us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="signup.html">Sign up</a></li>
+        </ul>
+    </nav>
+
+    <section id="explore">
+        <div class="overlay"></div>
+        <div class="logo-container">
+            <a href="index.html" class="logo"><img src="assets/logo.png" alt="Wanderwise Logo"></a>
+        </div>
+        <div class="content-wrapper">
+            <div class="hero">
+                <h1>Explore Your Next Adventure</h1>
+                <p>Discover amazing destinations and experiences.</p>
+            </div>
             <div class="search-container">
                 <div class="search-box">
                     <input type="text" class="search-input" id="searchInput" placeholder="Search destinations, locations...">
@@ -46,92 +47,23 @@
                     <button class="category-btn" data-category="Adventure">Adventure</button>
                 </div>
             </div>
-
             <div id="destinationsContainer" class="destinations-grid">
-                <!-- Destinations will be loaded here -->
                 <div class="loading">Loading destinations...</div>
             </div>
         </div>
-    </main>
+    </section>
 
-    <!-- Destination Detail Modal -->
-    <div id="destinationModal" class="destination-modal">
-        <div class="modal-content">
-            <span class="close-modal" id="closeModal">&times;</span>
-            <img src="" alt="" id="modalImg" class="modal-img">
-            <div class="modal-details">
-                <h2 id="modalName" class="modal-name"></h2>
-                <div id="modalLocation" class="modal-location"></div>
-                <div id="modalRating" class="destination-rating"></div>
-                <p id="modalDescription" class="modal-description"></p>
-                
-                <div class="reviews-section">
-                    <h3>Reviews</h3>
-                    <div id="reviewFormContainer">
-                        <!-- Review form will be loaded here if user is logged in -->
-                    </div>
-                    <div id="reviewsList" class="reviews-list">
-                        <!-- Reviews will be loaded here -->
-                    </div>
-                </div>
+    <footer>
+        <div class="footer-content">
+            <div class="socials">
+                <a href="https://www.twitter.com/"><img src="assets/mail.png" alt="Facebook"></a>
+                <a href="https://www.twitter.com/"><img src="assets/x-modified.png" alt="Twitter"></a>
+                <a href="https://www.instagram.com/"><img src="assets/ig.png" alt="Instagram"></a>
             </div>
+            <span class="copyright">
+                &copy; 2025 Wanderwise | All Rights Reserved
+            </span>
         </div>
-    </div>
-
-    <!-- Login Modal -->
-    <div id="loginModal" class="destination-modal">
-        <div class="modal-content" style="max-width: 400px;">
-            <span class="close-modal" id="closeLoginModal">&times;</span>
-            <div class="modal-details">
-                <h2 class="modal-name">Login</h2>
-                <form id="loginForm">
-                    <div style="margin-bottom: 15px;">
-                        <label for="loginEmail">Email</label>
-                        <input type="email" id="loginEmail" class="review-input" required>
-                    </div>
-                    <div style="margin-bottom: 15px;">
-                        <label for="loginPassword">Password</label>
-                        <input type="password" id="loginPassword" class="review-input" required>
-                    </div>
-                    <div id="loginError" class="error-message"></div>
-                    <button type="submit" class="submit-review">Login</button>
-                </form>
-                <div style="margin-top: 20px; text-align: center;">
-                    <p>Don't have an account? <a href="#" id="switchToSignup" class="auth-link">Sign up</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Signup Modal -->
-    <div id="signupModal" class="destination-modal">
-        <div class="modal-content" style="max-width: 400px;">
-            <span class="close-modal" id="closeSignupModal">&times;</span>
-            <div class="modal-details">
-                <h2 class="modal-name">Sign Up</h2>
-                <form id="signupForm">
-                    <div style="margin-bottom: 15px;">
-                        <label for="signupUsername">Username</label>
-                        <input type="text" id="signupUsername" class="review-input" required>
-                    </div>
-                    <div style="margin-bottom: 15px;">
-                        <label for="signupEmail">Email</label>
-                        <input type="email" id="signupEmail" class="review-input" required>
-                    </div>
-                    <div style="margin-bottom: 15px;">
-                        <label for="signupPassword">Password</label>
-                        <input type="password" id="signupPassword" class="review-input" required>
-                    </div>
-                    <div id="signupError" class="error-message"></div>
-                    <button type="submit" class="submit-review">Sign Up</button>
-                </form>
-                <div style="margin-top: 20px; text-align: center;">
-                    <p>Already have an account? <a href="#" id="switchToLogin" class="auth-link">Login</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="explore.js"></script>
+    </footer>
 </body>
-</html>
+
