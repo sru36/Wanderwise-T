@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderwise - Trip Planning</title>
+    <link rel="stylesheet" href="signup.css">
+    <link rel="preload" href="fonts/Satoshi_Complete/Fonts/OTF/Satoshi-Light.otf" as="font" type="font/otf" crossorigin>
+    <link rel="preload" href="fonts/Satoshi_Complete/Fonts/OTF/Satoshi-Bold.otf" as="font" type="font/otf" crossorigin>
+</head>
+<body>
+    <main>
+        <div class="hero">
+            <div class="overlay"></div>
+            <div class="content-container">
+                <div class="content-box">
+                    <h1 class="title">Plan Your Adventure</h1>
+                    <p class="subtitle">Welcome to Wanderwise! Start planning your dream trip.</p>
+                    <div class="navigation-buttons">
+                        <a href="review.html" class="nav-btn">Leave a Review</a>
+                        <a href="#" class="nav-btn" id="logout-btn">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="socials">
+                <a href="https://www.facebook.com/"><img src="assets/mail.png" alt="Facebook"></a>
+                <a href="https://www.twitter.com/"><img src="assets/x-modified.png" alt="Twitter"></a>
+                <a href="https://www.instagram.com/"><img src="assets/ig.png" alt="Instagram"></a>
+            </div>
+            <span class="copyright">
+                &copy; 2025 Wanderwise | All Rights Reserved
+            </span>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoutBtn = document.getElementById('logout-btn');
+            
+            logoutBtn.addEventListener('click', async function(e) {
+                e.preventDefault();
+                
+                try {
+                    const response = await fetch('/api/logout');
+                    const data = await response.json();
+                    
+                    if (response.ok) {
+                        alert(data.message);
+                        window.location.href = data.redirect;
+                    } else {
+                        alert(data.message);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('An error occurred during logout');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
