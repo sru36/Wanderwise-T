@@ -40,7 +40,7 @@ section {
 }
 
 #home {
-    background-image: url('assets/city.jpg');
+    background-image: url('../assets/city.jpg');
     background-size: cover;
     background-position: center;
     color: #EFC958;
@@ -149,7 +149,7 @@ button:hover {
     animation: bounce 2s infinite;
 }
 #about {
-    background-image: url('assets/lake.jpg');
+    background-image: url('../assets/lake.jpg');
     background-size: cover;
     background-position: center;
     color: #EFC958;
@@ -342,7 +342,7 @@ button:hover {
 
 #services {
     position: relative;
-    background-image: url('assets/mountain.jpg');
+    background-image: url('../assets/mountain.jpg');
     background-size: cover;
     background-position: center;
     color: #EFC958;
@@ -417,15 +417,15 @@ button:hover {
 }
 
 .b1 {
-    background-image: url("assets/hotel.jpg");
+    background-image: url("../assets/hotel.jpg");
 }
 
 .b2 {
-    background-image: url("assets/flight.jpg");
+    background-image: url("../assets/flight.jpg");
 }
 
 .b3 {
-    background-image: url("assets/dinein.jpg");
+    background-image: url("../assets/dinein.jpg");
 }
 
 .service-content {

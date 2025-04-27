@@ -41,7 +41,7 @@ section {
 }
 
 #explore {
-    background-image: url('assets/city.jpg');
+    background-image: url('../assets/city.jpg');
     background-size: cover;
     background-position: center;
     color: #EFC958;

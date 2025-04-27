@@ -39,7 +39,7 @@ body {
 }
 
 .hero {
-    background-image: url("assets/beach.jpg");
+    background-image: url("../assets/beach.jpg");
     position: absolute;
     top: 0;
     left: 0;

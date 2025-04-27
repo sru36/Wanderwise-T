@@ -6,7 +6,8 @@ document.getElementById('signupForm').addEventListener('submit', async (e) => {
   const password = document.getElementById('password').value;
 
   try {
-    const response = await fetch('/api/signup', {
+    // Explicitly use the backend server URL
+    const response = await fetch("http://localhost:3000/auth/signup", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ fullName, email, password })

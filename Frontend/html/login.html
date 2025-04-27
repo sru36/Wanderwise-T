@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wanderwise - Login</title>
-    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="../css/signup.css">
 
     <link rel="preload" href="fonts/Satoshi_Complete/Fonts/OTF/Satoshi-Light.otf" as="font" type="font/otf" crossorigin>
     <link rel="preload" href="fonts/Satoshi_Complete/Fonts/OTF/Satoshi-Bold.otf" as="font" type="font/otf" crossorigin>
@@ -15,12 +15,12 @@
             <div class="overlay"></div>
             <div class="form-container">
                 <div class="form-box">
-                    <form class="signup-form">
+                    <form id="signupForm" class="signup-form">
                         <h1 class="title">Login</h1>
                         <p class="subtitle">Welcome back!</p>
                         <div class="input-container">
-                            <input type="email" class="input" placeholder="Email" required aria-label="Email">
-                            <input type="password" class="input" placeholder="Password" required minlength="8" aria-label="Password">
+                            <input type="email" id="email" name="email" class="input" placeholder="Email" required aria-label="Email">
+                            <input type="password" id="password" name="password" class="input" placeholder="Password" required minlength="8" aria-label="Password">
                         </div>
                         <button type="submit" class="submit-btn">Login</button>
                     </form>
@@ -34,14 +34,16 @@
     <footer>
         <div class="footer-content">
             <div class="socials">
-                <a href="https://www.facebook.com/"><img src="assets/mail.png" alt="Facebook"></a>
-                <a href="https://www.twitter.com/"><img src="assets/x-modified.png" alt="Twitter"></a>
-                <a href="https://www.instagram.com/"><img src="assets/ig.png" alt="Instagram"></a>
+                <a href="https://www.facebook.com/"><img src="../assets/mail.png" alt="Facebook"></a>
+                <a href="https://www.twitter.com/"><img src="../assets/x-modified.png" alt="Twitter"></a>
+                <a href="https://www.instagram.com/"><img src="../assets/ig.png" alt="Instagram"></a>
             </div>
             <span class="copyright">
                 &copy; 2025 Wanderwise | All Rights Reserved
             </span>
         </div>
     </footer>
+    <script src="../js/login.js"></script>
 </body>
+
 </html>
