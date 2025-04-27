@@ -52,6 +52,6 @@ function bookPackage(packageName) {
     // Store selected package in session storage for booking process
     sessionStorage.setItem('selectedPackage', JSON.stringify(selectedPackage));
     
-    // Redirect to booking page
-    window.location.href = 'booking.html';
+    // Display confirmation message (instead of redirecting in this example)
+    alert(`Thank you for booking the ${packageName}! A confirmation will be sent to your email.`);
 }
