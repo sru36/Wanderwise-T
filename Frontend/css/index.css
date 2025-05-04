@@ -502,7 +502,7 @@ button:hover {
 }
 
 #reviews {
-    background-image: url('assets/fort.jpg');
+    background-image: url('../assets/fort.jpg');
     background-size: cover;
     background-position: center;
     color: #EFC958;

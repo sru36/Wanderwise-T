@@ -14,7 +14,6 @@ document.getElementById('signupForm').addEventListener('submit', async (e) => {
     const data = await response.json();
 
     if (response.ok) {
-      alert(data.message);
       window.location.href = data.redirect;
     } else {
       alert(data.message);
