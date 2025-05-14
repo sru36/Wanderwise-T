@@ -1,112 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>India Trip Planner</title>
-    <link rel="stylesheet" href="../css/planning.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>India Trip Planner</title>
+  <link rel="stylesheet" href="../css/planning.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"/>
 </head>
 <body>
-    <!-- Hero Section with Trip Planning Form -->
-    <div class="hero">
-        <div class="overlay"></div>
-        <div class="form-container">
-            <div class="form-box">
-                <div class="planning-box">
-                    <h2 class="title">India Trip Planner</h2>
-                    <p class="subtitle">Plan your perfect Indian adventure</p>
-                    <form id="tripForm" class="signup-form">
-                        <div class="input-container">
-                            <label for="destination" class="sr-only">Destination</label>
-                            <select id="destination" class="input" required>
-                                <option value="">Select a destination</option>
-                                <option value="delhi">Delhi</option>
-                                <option value="mumbai">Mumbai</option>
-                                <option value="goa">Goa</option>
-                                <option value="jaipur">Jaipur</option>
-                                <option value="kerala">Kerala</option>
-                                <option value="varanasi">Varanasi</option>
-                                <option value="agra">Agra</option>
-                                <option value="shimla">Shimla</option>
-                                <option value="darjeeling">Darjeeling</option>
-                                <option value="manali">Manali</option>
-                            </select>
-                        </div>
-                        <div class="input-container">
-                            <label for="days" class="sr-only">Number of Days</label>
-                            <input type="number" id="days" min="1" max="30" class="input" placeholder="Number of Days" required>
-                        </div>
-                        <div class="input-container">
-                            <label for="budget" class="sr-only">Budget</label>
-                            <input type="number" id="budget" min="1000" class="input" placeholder="Budget (INR)" required>
-                        </div>
-                        <button type="submit" class="submit-btn" id="planButton">Plan My Trip</button>
-                    </form>
-                </div>
+  
+  <div class="hero">
+    <div class="overlay"></div>
+    <div class="form-container">
+      <div class="form-box">
+        <div class="planning-box">
+          <h2 class="title">India Trip Planner</h2>
+          <p class="subtitle">Plan your perfect Indian adventure</p>
+          <form id="tripForm" class="signup-form">
+            <div class="input-container">
+              <select id="destination" class="input" required>
+                <option value="">Select a destination</option>
+                <option value="delhi">Delhi</option>
+                <option value="mumbai">Mumbai</option>
+                <option value="goa">Goa</option>
+                <option value="jaipur">Jaipur</option>
+                <option value="kerala">Kerala</option>
+                <option value="varanasi">Varanasi</option>
+                <option value="agra">Agra</option>
+                <option value="shimla">Shimla</option>
+                <option value="darjeeling">Darjeeling</option>
+                <option value="manali">Manali</option>
+              </select>
             </div>
+            <div class="input-container">
+              <input type="number" id="days" min="1" max="30" class="input" placeholder="Number of Days" required />
+            </div>
+            <div class="input-container">
+              <input type="number" id="budget" min="1000" class="input" placeholder="Budget (INR)" required />
+            </div>
+            <button type="submit" class="submit-btn" id="planButton">Plan My Trip</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="results-container" class="results-container hidden">
+      <div class="form-box results-box">
+        <h2 class="title">Your Personalized Trip Plan</h2>
+        <div id="loading" class="hidden">
+          <div class="spinner"></div>
+          <p>Creating your perfect trip plan...</p>
+        </div>
+        <div id="trip-results">
+          <div class="result-section">
+            <h3 class="subtitle">Travel Options</h3>
+            <div id="travel-options" class="options-grid"></div>
+          </div>
+          <div class="result-section">
+            <h3 class="subtitle">Accommodation Options</h3>
+            <div id="accommodation-options" class="options-grid"></div>
+          </div>
+          <div class="result-section">
+            <h3 class="subtitle">Places to Visit</h3>
+            <div id="places-to-visit" class="options-grid"></div>
+          </div>
+          <div class="result-section">
+            <h3 class="subtitle">Trip Summary & Recommendation</h3>
+            <div id="trip-summary" class="options-grid"></div>
+          </div>
+          <div class="buttons-container">
+            <button id="saveItineraryBtn" class="submit-btn">Save Itinerary</button>
+            <button id="newSearchBtn" class="secondary-btn">New Search</button>
+            
+          </div>
+          <div class="buttons-container" style="margin-top: 20px;">
+            <a href="review.html" class="submit-btn" style="text-align: center;">Leave a Review</a>
+        </div>
         </div>
         
-        <!-- Results Container (Hidden by Default) -->
-        <div id="results-container" class="results-container hidden">
-            <div class="form-box results-box">
-                <h2 class="title">Your Personalized Trip Plan</h2>
-                <div id="loading" class="hidden">
-                    <div class="spinner"></div>
-                    <p>Creating your perfect trip plan...</p>
-                </div>
-                
-                <div id="trip-results">
-                    <div class="result-section">
-                        <h3 class="subtitle">Travel Options</h3>
-                        <div id="travel-options" class="options-grid"></div>
-                    </div>
-                    
-                    <div class="result-section">
-                        <h3 class="subtitle">Accommodation Options</h3>
-                        <div id="accommodation-options" class="options-grid"></div>
-                    </div>
-                    
-                    <div class="result-section">
-                        <h3 class="subtitle">Places to Visit</h3>
-                        <div id="places-to-visit" class="options-grid"></div>
-                    </div>
-                    
-                    <div class="buttons-container">
-                        <button id="saveItineraryBtn" class="submit-btn">Save Itinerary</button>
-                        <button id="newSearchBtn" class="secondary-btn">New Search</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
+
     </div>
     
-    <!-- Popular Packages Section -->
-    <div id="packages-container" class="packages-container">
-        <h2 class="section-title">Popular Travel Packages</h2>
-        <div class="packages-grid" id="packages-grid">
-            <!-- Packages will be populated by JavaScript -->
-        </div>
-    </div>
-
-    <footer>
-        <div class="footer-content">
-            <div class="socials">
-                <a href="https://www.facebook.com/"><img src="../assets/mail.png" alt="Facebook"></a>
-                <a href="https://www.twitter.com/"><img src="../assets/x-modified.png" alt="Twitter"></a>
-                <a href="https://www.instagram.com/"><img src="../assets/ig.png" alt="Instagram"></a>
-            </div>
-            <span class="copyright">
-                &copy; 2025 Wanderwise | All Rights Reserved
-            </span>
-        </div>
-    </footer>
-
-    <!-- Separate JavaScript Files -->
-    <script src="../js/destinations-data.js"></script>
-    <script src="../js/trip-planner.js"></script>
-    <script src="../js/packages.js"></script>
+    
+  </div>
+  
+  
+  
+  <!-- JavaScript Files -->
+  <script src="../js/destination-data.js"></script>
+  <script src="../js/trip-planner.js"></script>
 </body>
 </html>

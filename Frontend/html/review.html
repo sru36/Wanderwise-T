@@ -18,13 +18,12 @@
                         <h1 class="title">Share Your Experience</h1>
                         <p class="subtitle">Help others find their perfect adventure!</p>
                         
-                        <!-- Login Section -->
+                        <!-- Trip Name Input -->
                         <div class="input-container">
-                            <input type="email" class="input" placeholder="Email" required aria-label="Email">
-                            <input type="password" class="input" placeholder="Password" required minlength="8" aria-label="Password">
+                            <input type="text" class="input" id="tripName" name="tripName" placeholder="Enter the name of your trip" required aria-label="Trip Name">
                         </div>
                         
-                        <!-- Star Rating - Moved above the comment section -->
+                        <!-- Star Rating -->
                         <div class="rating-container">
                             <p class="rating-title">Rate your experience:</p>
                             <div class="star-rating">
@@ -43,10 +42,10 @@
                         
                         <!-- Review Text Box -->
                         <div class="review-text-container">
-                            <textarea class="review-text" placeholder="Share your thoughts about your trip experience..." required aria-label="Your review"></textarea>
+                            <textarea class="review-text" name="reviewText" placeholder="Share your thoughts about your trip experience..." required aria-label="Your review"></textarea>
                         </div>
                         
-                        <!-- Image Upload Section - Simplified for HTML/CSS only -->
+                        <!-- Image Upload Section -->
                         <div class="image-upload-container">
                             <label for="reviewImage" class="image-upload-label">
                                 <div class="upload-icon">
@@ -54,10 +53,11 @@
                                 </div>
                                 <span>Add photos from your trip</span>
                             </label>
-                            <input type="file" id="reviewImage" name="reviewImage" accept="image/*" class="image-input">
+                            <input type="file" id="reviewImage" name="reviewImage" accept="image/*" multiple class="image-input">
+                            <div class="image-preview"></div>
                         </div>
-                        <a href="../html/thankyou.html">
-                        <button type="submit" class="submit-btn">Submit Review</button></a>
+                        
+                        <button type="submit" class="submit-btn">Submit Review</button>
                     </form>
                     <div class="form-section">
                         <p>Don't have an account? <a href="../html/signup.html">Sign up</a></p>
@@ -69,8 +69,8 @@
     <footer>
         <div class="footer-content">
             <div class="socials">
-                <a href="https://www.facebook.com/"><img src="../assets/mail.png" alt="Facebook"></a>
-                <a href="https://www.twitter.com/"><img src="../assets/x-modified.png" alt="Twitter"></a>
+                <a href="https://www.facebook.com/"><img src="../assets/mail.png" alt="Email"></a>
+                <a href="https://www.twitter.com/"><img src="../assets/x-modified.png" alt="X"></a>
                 <a href="https://www.instagram.com/"><img src="../assets/ig.png" alt="Instagram"></a>
             </div>
             <span class="copyright">
@@ -78,5 +78,34 @@
             </span>
         </div>
     </footer>
+
+    <script>
+    // Simple JavaScript to handle image preview
+    document.addEventListener('DOMContentLoaded', function() {
+        const imageInput = document.getElementById('reviewImage');
+        const previewContainer = document.querySelector('.image-preview');
+        
+        imageInput.addEventListener('change', function() {
+            previewContainer.innerHTML = ''; // Clear previous previews
+            
+            if (this.files) {
+                Array.from(this.files).forEach(file => {
+                    if (!file.type.match('image')) return;
+                    
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.className = 'preview-img';
+                        previewContainer.appendChild(img);
+                    }
+                    
+                    reader.readAsDataURL(file);
+                });
+            }
+        });
+    });
+    </script>
 </body>
 </html>
